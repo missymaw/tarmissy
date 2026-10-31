@@ -1,0 +1,78 @@
+GUÍA DE CONFIGURACIÓN — TARMISSY
+================================
+
+ARCHIVOS QUE SE CONSERVAN
+- index.html: punto de entrada. No contiene identidad.
+- config.js: configuración central de contenido, identidad, imágenes, tema y vista previa.
+- config-plantillas.js: selector de las 18 plantillas.
+- plantillas/*.js: definiciones visuales de cada plantilla.
+- assets/motor.js: motor que lee config.js y renderiza el contenido.
+- assets/base.css: estilos compartidos.
+- assets/preview-shell.js: vista previa interna reutilizable.
+- assets/imagenes/: recursos gráficos.
+
+CONFIGURAR FOTOGRAFÍAS (SOLO EN config.js)
+1. Copia las imágenes a assets/imagenes/.
+2. En config.js, edita media.images:
+   avatar: "assets/imagenes/mi-foto.webp"
+   cover: "assets/imagenes/portada.webp"
+   logo: "assets/imagenes/logo.svg"
+   featured: "assets/imagenes/proyecto.webp"
+   background: "assets/imagenes/fondo.webp"
+3. profile.avatarImage, profile.coverImage y profile.logoImage permiten una imagen
+   específica; si están vacíos, el motor usa media.images.avatar/cover/logo.
+4. En cualquier elemento de content (servicios, portafolio, galería, productos,
+   etc.) agrega o cambia image: "assets/imagenes/archivo.webp".
+5. Para reutilizar una imagen central, escribe image: "@avatar", image: "@cover",
+   image: "@logo", image: "@featured" o image: "@background".
+6. media.imageFit admite cover o contain. media.imagePosition controla el encuadre.
+
+CONFIGURAR IDENTIDAD Y CONTENIDO
+- meta: título, descripción SEO y color del navegador.
+- profile: nombre, cargo, lema, biografía, ubicación, insignias e imágenes.
+- actions: botones principales.
+- socialLinks: redes y enlaces.
+- content: servicios, proyectos, galería, videos, preguntas, contacto, mapa,
+  trayectoria, productos, publicaciones y demás secciones.
+- visibility: activa o desactiva datos y secciones.
+- sectionsOrder: orden de las secciones.
+- sectionTitles / sectionDescriptions: títulos y descripciones por sección.
+- footer: texto y enlaces finales.
+
+CONFIGURAR DISEÑO
+- theme.colors: primary, secondary, background, surface, surface2, text, muted,
+  accent, border y glow.
+- theme.fontHeading / theme.fontBody: tipografías.
+- theme.radius: redondeo general.
+- theme.backgroundImage o media.images.background: fondo.
+- theme.backgroundPosition / backgroundSize / backgroundRepeat: encuadre del fondo.
+- theme.animations: activa o desactiva movimiento.
+- theme.customCss: CSS adicional opcional.
+- layout: ancho, separación y ancho mínimo de tarjetas.
+Las plantillas conservan su identidad visual; sus CSS individuales aún definen
+detalles artísticos específicos. La configuración global controla la paleta común,
+recursos, tipografía, radios y distribución compartida.
+
+VISTA PREVIA INTERNA
+- preview.enabled: activa/desactiva el sistema.
+- preview.interceptExternalLinks: intenta mostrar enlaces web externos en iframe.
+- preview.autoHideMenuOnNavigate y preview.autoHideDelayMs: ocultación del menú.
+- preview.openOutside: dominios que siempre abren fuera (por ejemplo WhatsApp).
+- preview-shell.js agrega un marco de vista previa a pantalla completa, con regreso
+  a la tarjeta y apertura externa.
+IMPORTANTE: algunos sitios envían X-Frame-Options o Content-Security-Policy
+(frame-ancestors) y bloquean iframes. El navegador no permite que una página externa
+lea esas cabeceras ni detectar con certeza el bloqueo. El botón “¿No carga?” permite
+mostrar la alternativa de abrir el sitio fuera. No se puede forzar la incrustación
+desde el sitio que contiene el iframe.
+
+PLANTILLAS
+- Cambia templateFile en config.js.
+- El selector inferior permite recorrer las 18 plantillas mediante ?plantilla=...
+- Los datos permanecen en config.js; plantillas/*.js deben contener solo diseño.
+
+PUBLICACIÓN
+Sube el contenido de la carpeta tarmissy conservando las rutas relativas. index.html,
+config.js, favicon.svg, manifest.webmanifest, sw.js, assets/ y plantillas/ deben
+quedar al mismo nivel que en el ZIP. No publiques la carpeta externa del ZIP como
+un nivel adicional.

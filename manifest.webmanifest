@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "tarjeta digital",
+  "short_name": "tarjeta",
+  "description": "tarjeta digital configurable",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080716",
+  "theme_color": "#080716",
+  "lang": "es-MX",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

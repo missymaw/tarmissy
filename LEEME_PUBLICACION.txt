@@ -1,0 +1,1 @@
+Esta carpeta contiene el árbol estático publicable. Se puede subir su contenido a cualquier servidor HTTP estático. La fuente editable de configuración está en la raíz del paquete; después de cambiarla, ejecuta preparar_public.py para actualizar esta copia.

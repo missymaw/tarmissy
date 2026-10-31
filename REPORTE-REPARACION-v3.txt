@@ -1,0 +1,14 @@
+REPARACIÓN TÉCNICA v3 — 2026-10-30
+
+Base: estructura de tarmissy-reparado-v2.zip, conservando rutas y nombres originales.
+
+Correcciones verificables:
+1. Eliminado el error de referencia layoutCfg no definida dentro de applyTheme() de assets/motor.js. Ese error interrumpía el montaje inicial antes de renderizar la tarjeta.
+2. Eliminada la inyección CSS duplicada y prematura dentro de applyTheme(); las reglas de distribución se aplican una sola vez después del CSS de la plantilla.
+3. La paleta nativa de cada plantilla vuelve a ser la predeterminada. config.js.theme.colors queda vacío intencionalmente; solo las claves que se agreguen allí sobrescriben la paleta nativa. Evita texto oscuro sobre panel oscuro y viceversa.
+4. Corregido el ajuste de texto para no partir palabras arbitrariamente; se conserva el salto natural y la distribución responsive.
+5. Se conserva el selector de pruebas. templateFile en config.js sigue siendo la plantilla fija para todos los visitantes; ?plantilla=... solo cambia la vista de prueba de esa visita.
+6. Se conserva la vista previa reutilizable en assets/preview-shell.js, integrada desde index.html.
+7. Se conserva la configuración central de imágenes, contenido, enlaces, SEO, favicon y visibilidad.
+
+QA: revisar reporte de navegador aparte. No se afirma que todos los destinos externos permitan iframe; eso depende de sus cabeceras CSP/X-Frame-Options.

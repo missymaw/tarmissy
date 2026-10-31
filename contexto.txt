@@ -1,0 +1,36 @@
+CONTEXTO DEL PROYECTO: TARJETA DIGITAL (MAWDDI / MISSY)
+=======================================================
+
+1. DESCRIPCIÓN GENERAL
+Es una tarjeta digital de una sola página (SPA) que carga contenido dinámico desde un archivo de configuración central. Utiliza un motor propio (Vanilla JS) que inyecta los datos en una de las 18 plantillas visuales disponibles. Incluye un selector de plantillas de prueba (?plantilla=...) y una vista previa interna para enlaces externos.
+
+2. ESTRUCTURA EXACTA DE ARCHIVOS Y CARPETAS (No alterar rutas)
+- Raíz: 
+  - index.html
+  - config.js (Configuración central: identidad, SEO, visibilidad, contenido)
+  - config-plantillas.js (Selector flotante de plantillas)
+  - sw.js (Service Worker)
+  - manifest.webmanifest
+  - favicon.svg
+- Carpeta "assets/":
+  - base.css (Estilos globales y de la vista previa)
+  - motor.js (Motor de renderizado: lee config.js e inyecta HTML)
+  - preview-shell.js (Lógica del iframe de vista previa)
+  - Carpeta "imagenes/":
+    - missy01.jpg (Foto de perfil)
+    - LEEME.txt
+- Carpeta "plantillas/":
+  - a1-gallery.js, ali-animus.js, chonkylotus.js, chrls-dsgn.js, cyberpunk-neon-animado.js, dribbble.js, elena-tiffany.js, everylunaever.js, faymas.js, finstey.js, juls-passion.js, lilly-vinnily.js, mariana-gomes.js, olivia-brooke.js, sarah-anderson.js, tali-edri.js, valerie-senior.js, yumie-tsuchinoko.js
+
+3. ESTADO ACTUAL Y CORRECCIONES YA APLICADAS
+- El error de "layoutCfg no definida" en motor.js YA ESTÁ CORREGIDO (se define dentro de mountTemplate).
+- El ajuste de texto (word-wrap) en motor.js ya usa 'overflow-wrap: break-word' y 'word-break: normal' para no partir palabras a la mitad.
+- config.js.theme.colors está vacío intencionalmente para respetar la paleta nativa de cada plantilla.
+- En config.js, la visibilidad del avatar debe estar en "true" para que se vea missy01.jpg.
+- En sw.js, el archivo 'assets/preview-shell.js' DEBE estar en la lista 'FILES' del caché.
+
+4. INSTRUCCIONES PARA LA IA (CÓMO AYUDAR)
+- No intentes generar scripts de Python para crear todo el ZIP, el chat se corta por límite de tokens.
+- El usuario tiene el proyecto local con esta estructura exacta.
+- La IA debe dar instrucciones quirúrgicas (ej. "Cambia la línea 45 de tal archivo") o devolver ÚNICAMENTE el texto del archivo específico que el usuario suba, para que el usuario lo copie y pegue.
+- Si el usuario reporta un error, pedirle que pegue el error de la consola o suba solo ese archivo .js específico.

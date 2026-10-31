@@ -1,0 +1,34 @@
+REPARACIÓN TÉCNICA — 2026-10-30
+
+Base: ZIP original tarmissy.zip. No se usó el ZIP reparado anterior como base.
+Se conserva la carpeta pública tarmissy/ y sus rutas relativas originales.
+
+Cambios:
+1. config.js ahora concentra opciones explícitas de recursos gráficos, imágenes,
+   diseño global, SEO y comportamiento de vista previa.
+2. assets/motor.js resuelve alias de imágenes @avatar, @cover, @logo, @featured
+   y @background; mantiene rutas directas para imágenes individuales de contenido.
+3. La paleta y los límites globales de distribución se aplican después del CSS
+   individual de la plantilla para reducir conflictos de cascada.
+4. Se añadió assets/preview-shell.js y se integró desde index.html.
+5. La vista previa interna intercepta enlaces HTTP/HTTPS externos, excepto los
+   dominios configurados para abrir fuera. Los sitios que bloquean iframe no pueden
+   forzarse; se ofrece el control “¿No carga?” y apertura externa.
+6. Se corrigió el selector roto [data-status] en config-plantillas.js.
+7. Se agregó GUIA-CONFIGURACION.txt.
+8. Se conservaron los 18 archivos de plantillas, index.html, config.js, config-
+   plantillas.js, assets/motor.js, assets/base.css, favicon, manifest, service worker,
+   imágenes y el archivo legado fintstey.js en la raíz.
+
+Verificaciones realizadas:
+- 25 archivos JavaScript pasaron node --check.
+- Los recursos referenciados por index.html existen.
+- Se confirmó que existen las 18 plantillas.
+- Se confirmó la carga del nuevo preview-shell.js.
+- Se confirmó que el ZIP se empaqueta sin duplicar el directorio tarmissy/tarmissy.
+
+Limitación pendiente:
+No se pudo ejecutar una prueba visual en navegador real en este entorno porque no
+hay un navegador Chromium instalado/disponible. Por tanto, no se declara QA visual
+completo ni compatibilidad iframe universal. Se recomienda probar en el dominio QA
+antes de producción.
